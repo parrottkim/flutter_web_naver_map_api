@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
       'naver-map',
       (int viewId) => IFrameElement()
         ..style.width = '100%'
-        ..height = '720'
+        ..style.height = '100%'
         ..src = 'assets/map.html'
         ..style.border = 'none',
     );
@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Center(
         child: SizedBox(
-          height: 720.0,
+          height: MediaQuery.of(context).size.height,
           width: double.infinity,
           child: HtmlElementView(viewType: 'naver-map'),
         ),
