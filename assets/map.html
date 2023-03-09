@@ -1,0 +1,37 @@
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=CLIENT_ID"></script>
+<div id="map" style="width:100%;height:400px;"></div>
+<script>
+    var mapOptions = {
+        center: new naver.maps.LatLng(35.855746, 128.489024),
+        zoom: 16
+    };
+    var map = new naver.maps.Map('map', mapOptions);
+
+    var marker = new naver.maps.Marker({
+        position: new naver.maps.LatLng(35.855746, 128.489024),
+        title: '계명대학교',
+        map: map
+    });
+
+    var contentString = [
+        '<div class="iw_inner" onclick="window.open(\'https://naver.me/FhAUVHe1\');" style="padding: 0px 20px 0px 20px">',
+        '   <h3>계명대학교</h3>',
+        '   <p>대구 달서구 신당동 산40-1<br>053-580-5114',
+        '   </p>',
+        '</div>'
+    ].join('');
+
+    var infowindow = new naver.maps.InfoWindow({
+        content: contentString
+    });
+
+    naver.maps.Event.addListener(marker, "click", function (e) {
+        if (infowindow.getMap()) {
+            infowindow.close();
+        } else {
+            infowindow.open(map, marker);
+        }
+    });
+
+    infowindow.open(map, marker);
+</script>
